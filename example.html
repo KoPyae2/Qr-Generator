@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="qr.js"></script>
+    </head>
+    <style>
+      body{
+        display: flex;
+        justify-content:center;
+        flex-direction:column;
+        align-items:center;
+      }
+    </style>
+    <body>
+        <canvas id="qr-canvas" width="500" height="500"></canvas>
+        <br>
+        <input id="input" onchange="refresh()">
+        <script>
+            QR.canvas = document.getElementById('qr-canvas')
+            QR.draw('qr.js')
+
+            QR.size = 500
+            // document.body.appendChild(QR.makeImage('test'))
+
+            var input = document.getElementById('input')
+            input.addEventListener('keypress',refresh)
+            function refresh () {
+                var s = Date.now()
+                QR.draw(input.value)
+            }
+        </script>
+    </body>
+</html>
